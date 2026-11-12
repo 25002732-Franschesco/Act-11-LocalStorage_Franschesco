@@ -9,8 +9,8 @@ class ResiduoRPBI  {
 const inputarea = document.getElementById("areaHosp");
 const inputtipo = document.getElementById("tipoRPBI");
 const inputpeso = document.getElementById("pesoKg");
-const btn = document.getElementById("agregarBtn");
-const list = document.getElementById("listaRPBI");
+const btn = document.getElementById("btnAgregarResiduo"); // Corregido el ID del botón
+const list = document.getElementById("listaResiduos");
 
 document.addEventListener("DOMContentLoaded", cargarRegistros);
 
@@ -52,11 +52,12 @@ function mostrarRegistros(){
         if(registritos.tipo === "Punzocortante"){
             cantidadPunzocortante += registritos.peso;
         } else if(registritos.tipo === "Patológico"){
-            cantidadPatológico +=  registritos.peso;
+            cantidadPatológico += registritos.peso;
         }
-        list.innerHTML += "<li>" + registritos.area + " - " + registritos.tipo + " - " + registritos.peso + " kg <button onclick='borrarResiduo(" + i + ")'>X</button></li>";
+        
+        list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">
+            ${registritos.area} - ${registritos.tipo} - ${registritos.peso} kg <button class="btn btn-danger btn-sm" onclick="borrarResiduo(${i})">X</button></li>`;
     }
-
     document.getElementById("totPunzo").textContent = cantidadPunzocortante;
     document.getElementById("totPato").textContent = cantidadPatológico;
 }
