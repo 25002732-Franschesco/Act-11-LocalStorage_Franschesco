@@ -49,11 +49,11 @@ function mostrarRegistros(){
         const registritos = registros[i];
 
 
-        if(registritos.tipo === "Punzocortante"){
-            cantidadPunzocortante += registritos.peso;
-        } else if(registritos.tipo === "Patológico"){
-            cantidadPatológico += registritos.peso;
-        }
+            if(registritos.tipo === "punzocortante"){
+                cantidadPunzocortante += registritos.peso;
+            } else if(registritos.tipo === "patologico"){                   
+                cantidadPatológico += registritos.peso;
+             }
         
         list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">
             ${registritos.area} - ${registritos.tipo} - ${registritos.peso} kg <button class="btn btn-danger btn-sm" onclick="borrarResiduo(${i})">X</button></li>`;
